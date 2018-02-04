@@ -10,4 +10,21 @@ public class CarFuelType extends BaseEntity{
 	
 	@Column(name = "fuel_type")
 	private String fuelType;
+
+	public CarFuelType() {
+	}
+	
+	public CarFuelType(String fuelType) {
+		this.fuelType = fuelType;
+	}
+
+	public String getFuelType() {
+		return fuelType;
+	}
+
+	public void setFuelType(String fuelType) {
+		this.fuelType = fuelType;
+	}
+	
+	
 }
