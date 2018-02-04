@@ -1,5 +1,30 @@
 package ua.logos.entity;
 
-public class CarColor {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "car_color")
+public class CarColor extends BaseEntity{
+	
+	@Column(name ="color")
+	private String color;
+
+	public CarColor(String color) {
+		this.color = color;
+	}
+
+	public CarColor() {
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	
 }

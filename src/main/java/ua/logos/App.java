@@ -1,13 +1,19 @@
 package ua.logos;
 
-/**
- * Hello world!
- *
- */
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("mysql");
+        EntityManager em = factory.createEntityManager();
+        
+        
+        
+        em.close();
+        factory.close();
     }
 }
