@@ -1,7 +1,11 @@
 package ua.logos.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,15 +23,19 @@ public class CarSeller extends BaseEntity{
 	
 	@Column(name = "phone_number")
 	private String phone_number;
+	
+	@OneToMany(mappedBy = "carSeller")
+	private List<Car> cars = new ArrayList<>();
 
 	public CarSeller() {
 	}
 
-	public CarSeller(String first_name, String last_name, int age, String phone_number) {
+	public CarSeller(String first_name, String last_name, int age, String phone_number, List<Car> cars) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
 		this.phone_number = phone_number;
+		this.cars = cars;
 	}
 
 	public String getFirst_name() {
@@ -61,6 +69,16 @@ public class CarSeller extends BaseEntity{
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
+	
 	
 	
 }

@@ -1,9 +1,14 @@
 package ua.logos.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,13 +19,22 @@ public class CarMake extends BaseEntity{
 	
 	@Column(name = "manufacture_year")
 	private Date manufactureYear;
-
-	public CarMake(String title, Date manufactureYear) {
-		this.title = title;
-		this.manufactureYear = manufactureYear;
-	}
+	
+	@ManyToOne
+	@JoinColumn(name = "car_model_id")
+	private CarModel carModel;
+	
+	@OneToMany(mappedBy = "carMake")
+	private List<Car> cars = new ArrayList<>();
 
 	public CarMake() {
+	}
+
+	public CarMake(String title, Date manufactureYear, CarModel carModel, List<Car> cars) {
+		this.title = title;
+		this.manufactureYear = manufactureYear;
+		this.carModel = carModel;
+		this.cars = cars;
 	}
 
 	public String getTitle() {
@@ -38,7 +52,24 @@ public class CarMake extends BaseEntity{
 	public void setManufactureYear(Date manufactureYear) {
 		this.manufactureYear = manufactureYear;
 	}
-	
+
+	public CarModel getCarModel() {
+		return carModel;
+	}
+
+	public void setCarModel(CarModel carModel) {
+		this.carModel = carModel;
+	}
+
+	public List<Car> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car> cars) {
+		this.cars = cars;
+	}
+
+
 	
 
 }
