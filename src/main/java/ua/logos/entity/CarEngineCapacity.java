@@ -21,9 +21,8 @@ public class CarEngineCapacity extends BaseEntity{
 	public CarEngineCapacity() {
 	}
 
-	public CarEngineCapacity(BigDecimal capacity, CarModel carModel) {
+	public CarEngineCapacity(BigDecimal capacity) {
 		this.capacity = capacity;
-		this.carModel = carModel;
 	}
 
 	public BigDecimal getCapacity() {

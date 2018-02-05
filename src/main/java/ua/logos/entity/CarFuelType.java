@@ -19,9 +19,8 @@ public class CarFuelType extends BaseEntity{
 	public CarFuelType() {
 	}
 
-	public CarFuelType(String fuelType, CarModel carModel) {
+	public CarFuelType(String fuelType) {
 		this.fuelType = fuelType;
-		this.carModel = carModel;
 	}
 
 	public String getFuelType() {

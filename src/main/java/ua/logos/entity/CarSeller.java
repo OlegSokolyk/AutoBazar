@@ -30,12 +30,11 @@ public class CarSeller extends BaseEntity{
 	public CarSeller() {
 	}
 
-	public CarSeller(String first_name, String last_name, int age, String phone_number, List<Car> cars) {
+	public CarSeller(String first_name, String last_name, int age, String phone_number) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
 		this.phone_number = phone_number;
-		this.cars = cars;
 	}
 
 	public String getFirst_name() {

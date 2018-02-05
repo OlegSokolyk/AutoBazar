@@ -36,13 +36,8 @@ public class CarModel extends BaseEntity{
 	public CarModel() {
 	}
 
-	public CarModel(String modelTitle, List<CarMake> carMake, CarColor carColor, CarFuelType fuelType,
-			CarEngineCapacity engineCapacity) {
+	public CarModel(String modelTitle) {
 		this.modelTitle = modelTitle;
-		this.carMake = carMake;
-		this.carColor = carColor;
-		this.fuelType = fuelType;
-		this.engineCapacity = engineCapacity;
 	}
 
 	public String getModelTitle() {

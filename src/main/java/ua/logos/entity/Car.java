@@ -26,10 +26,8 @@ public class Car extends BaseEntity{
 	public Car() {
 	}
 
-	public Car(BigDecimal price, CarSeller carSeller, CarMake carMake) {
+	public Car(BigDecimal price) {
 		this.price = price;
-		this.carSeller = carSeller;
-		this.carMake = carMake;
 	}
 
 	public BigDecimal getPrice() {

@@ -30,11 +30,9 @@ public class CarMake extends BaseEntity{
 	public CarMake() {
 	}
 
-	public CarMake(String title, Date manufactureYear, CarModel carModel, List<Car> cars) {
+	public CarMake(String title, Date manufactureYear) {
 		this.title = title;
 		this.manufactureYear = manufactureYear;
-		this.carModel = carModel;
-		this.cars = cars;
 	}
 
 	public String getTitle() {
