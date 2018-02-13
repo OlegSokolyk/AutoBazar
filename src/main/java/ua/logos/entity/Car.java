@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,11 +17,11 @@ public class Car extends BaseEntity{
 	@Column(name = "sell_price", columnDefinition = "DECIMAL(9,2)")
 	private BigDecimal price;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_seller_id")
 	private CarSeller carSeller;
 	
-	@ManyToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_make_id")
 	private CarMake carMake;
 

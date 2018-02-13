@@ -1,13 +1,9 @@
 package ua.logos.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,18 +14,18 @@ public class CarModel extends BaseEntity{
 	@Column(name ="model_title")
 	private String modelTitle;
 	
-	@OneToMany(mappedBy = "carModel")
-	private List<CarMake> carMake = new ArrayList<>();
+	@OneToOne(mappedBy = "carModel")
+	private CarMake make;
 	
-	@ManyToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "color_id")
 	private CarColor carColor;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fuel_type_id")
 	private CarFuelType fuelType;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "engine_capacity_id")
 	private CarEngineCapacity engineCapacity;
 
@@ -48,12 +44,12 @@ public class CarModel extends BaseEntity{
 		this.modelTitle = modelTitle;
 	}
 
-	public List<CarMake> getCarMake() {
-		return carMake;
+	public CarMake getMake() {
+		return make;
 	}
 
-	public void setCarMake(List<CarMake> carMake) {
-		this.carMake = carMake;
+	public void setMake(CarMake make) {
+		this.make = make;
 	}
 
 	public CarColor getCarColor() {
@@ -80,7 +76,4 @@ public class CarModel extends BaseEntity{
 		this.engineCapacity = engineCapacity;
 	}
 
-
-	
-	
 }

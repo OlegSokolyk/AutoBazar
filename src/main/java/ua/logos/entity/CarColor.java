@@ -1,11 +1,8 @@
 package ua.logos.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,8 +12,8 @@ public class CarColor extends BaseEntity{
 	@Column(name ="color")
 	private String color;
 	
-	@OneToMany(mappedBy = "carColor")
-	private List<CarModel> carModel = new ArrayList<>();
+	@OneToOne(mappedBy = "carColor")
+	private CarModel model;
 
 	public CarColor(String color) {
 		this.color = color;

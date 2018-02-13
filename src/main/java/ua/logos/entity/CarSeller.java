@@ -22,7 +22,7 @@ public class CarSeller extends BaseEntity{
 	private int age;
 	
 	@Column(name = "phone_number")
-	private String phone_number;
+	private long phone_number;
 	
 	@OneToMany(mappedBy = "carSeller")
 	private List<Car> cars = new ArrayList<>();
@@ -30,7 +30,7 @@ public class CarSeller extends BaseEntity{
 	public CarSeller() {
 	}
 
-	public CarSeller(String first_name, String last_name, int age, String phone_number) {
+	public CarSeller(String first_name, String last_name, int age, long phone_number) {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
@@ -61,11 +61,11 @@ public class CarSeller extends BaseEntity{
 		this.age = age;
 	}
 
-	public String getPhone_number() {
+	public long getPhone_number() {
 		return phone_number;
 	}
 
-	public void setPhone_number(String phone_number) {
+	public void setPhone_number(long phone_number) {
 		this.phone_number = phone_number;
 	}
 
