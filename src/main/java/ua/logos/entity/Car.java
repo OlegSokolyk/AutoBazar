@@ -17,7 +17,7 @@ public class Car extends BaseEntity{
 	@Column(name = "sell_price", columnDefinition = "DECIMAL(9,2)")
 	private BigDecimal price;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "car_seller_id")
 	private CarSeller carSeller;
 	

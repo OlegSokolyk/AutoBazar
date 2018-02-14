@@ -7,6 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.hibernate.criterion.MatchMode;
 
 import ua.logos.entity.Car;
 import ua.logos.entity.CarColor;
@@ -86,7 +93,7 @@ public class App
 //        	price+=5000;
 //		}
         
-        //JPQL
+//-----------------------------------------------------------------JPQL---------------------------------------------------------------
 //        List<CarMake> makes = em.createQuery("SELECT m FROM CarMake m WHERE m.id > 10", CarMake.class).getResultList();
 //        makes.forEach(m -> System.out.println(m));
 //        
@@ -106,8 +113,25 @@ public class App
 //        int cap = capacity.executeUpdate();
 //        List<CarEngineCapacity> cec = em.createQuery("SELECT c FROM CarEngineCapacity c", CarEngineCapacity.class).getResultList();
 //        cec.forEach(c -> System.out.println(c));
-        List<CarModel> models = em.createQuery("SELECT m FROM CarModel m JOIN m.carColor c WHERE m.carColor = c.id", CarModel.class).getResultList();
+        
+//        List<CarModel> models = em.createQuery("SELECT m FROM CarModel m JOIN m.carColor c WHERE m.carColor = c.id", CarModel.class).getResultList();
+//        models.forEach(m -> System.out.println(m));
+        
+        
+        
+//----------------------------------------------------------------Criteria----------------------------------------------------------
+        
+        		
+        CriteriaBuilder cb = em.getCriteriaBuilder();						//
+        CriteriaQuery<CarModel> query = cb.createQuery(CarModel.class);    //SELECT c FROM CarModel c
+        Root<CarModel> root = query.from(CarModel.class);				  //
+        query.select(root);												 //
+        
+        List<CarModel> models = em.createQuery(query).getResultList();
         models.forEach(m -> System.out.println(m));
+        
+        Expression<String> titleExpression = root.get("modelTitile"); //WHERE m.modelTitle
+        Predicate titlePredicate = cb.like(titleExpression, "6", MatchMode.START);
         
         em.getTransaction().commit();
         
