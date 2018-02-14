@@ -76,4 +76,9 @@ public class CarModel extends BaseEntity{
 		this.engineCapacity = engineCapacity;
 	}
 
+	@Override
+	public String toString() {
+		return "CarModel [modelTitle=" + modelTitle + ", getId()=" + getId() + "]";
+	}
+
 }

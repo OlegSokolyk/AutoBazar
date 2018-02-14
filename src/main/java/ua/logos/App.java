@@ -1,10 +1,12 @@
 package ua.logos;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import ua.logos.entity.Car;
 import ua.logos.entity.CarColor;
@@ -70,19 +72,42 @@ public class App
 //    	em.persist(make);
 //      }
 //      
-       double price = 100000.0;
+//       double price = 100000.0;
+//        
+//       for (int i = 1; i <= 20; i++) {
+//        	CarMake make = em.createQuery("SELECT cm FROM CarMake cm WHERE cm.id = :id", CarMake.class)
+//        			.setParameter("id", new Long(i)).getSingleResult();
+//        	CarSeller seller = em.createQuery("SELECT s FROM CarSeller s WHERE s.id = :id", CarSeller.class)
+//        			.setParameter("id", new Long(i)).getSingleResult();
+//        	Car car = new Car(new BigDecimal(price));
+//        	car.setCarMake(make);
+//        	car.setCarSeller(seller);
+//        	em.persist(car);
+//        	price+=5000;
+//		}
         
-       for (int i = 1; i <= 20; i++) {
-        	CarMake make = em.createQuery("SELECT cm FROM CarMake cm WHERE cm.id = :id", CarMake.class)
-        			.setParameter("id", new Long(i)).getSingleResult();
-        	CarSeller seller = em.createQuery("SELECT s FROM CarSeller s WHERE s.id = :id", CarSeller.class)
-        			.setParameter("id", new Long(i)).getSingleResult();
-        	Car car = new Car(new BigDecimal(price));
-        	car.setCarMake(make);
-        	car.setCarSeller(seller);
-        	em.persist(car);
-        	price+=5000;
-		}
+        //JPQL
+//        List<CarMake> makes = em.createQuery("SELECT m FROM CarMake m WHERE m.id > 10", CarMake.class).getResultList();
+//        makes.forEach(m -> System.out.println(m));
+//        
+//        List<Car> cars = em.createQuery("SELECT c FROM Car c WHERE c.price > 150000", Car.class).getResultList();
+//        cars.forEach(c -> System.out.println(c));
+        
+//        List<CarColor> colors = em.createQuery("SELECT cc FROM CarColor cc WHERE cc.id BETWEEN 8 AND 16", CarColor.class).getResultList();
+//        colors.forEach(cc -> System.out.println(cc));
+        
+//        List<CarModel> models = em.createQuery("SELECT m FROM CarModel m WHERE m.modelTitle LIKE '%4'", CarModel.class).getResultList();
+//        models.forEach(m -> System.out.println(m));
+        
+//        List<Car> cars = em.createQuery("SELECT c FROM Car c ORDER BY c.price DESC", Car.class).getResultList();
+//        cars.forEach(c -> System.out.println(c));
+        
+//        Query capacity = em.createQuery("DELETE FROM CarEngineCapacity c WHERE c.id > 25");
+//        int cap = capacity.executeUpdate();
+//        List<CarEngineCapacity> cec = em.createQuery("SELECT c FROM CarEngineCapacity c", CarEngineCapacity.class).getResultList();
+//        cec.forEach(c -> System.out.println(c));
+        List<CarModel> models = em.createQuery("SELECT m FROM CarModel m JOIN m.carColor c WHERE m.carColor = c.id", CarModel.class).getResultList();
+        models.forEach(m -> System.out.println(m));
         
         em.getTransaction().commit();
         

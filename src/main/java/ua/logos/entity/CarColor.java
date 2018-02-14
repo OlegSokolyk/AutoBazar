@@ -29,6 +29,11 @@ public class CarColor extends BaseEntity{
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+	@Override
+	public String toString() {
+		return "CarColor [color=" + color + ", getId()=" + getId() + "]";
+	}
 	
 	
 }

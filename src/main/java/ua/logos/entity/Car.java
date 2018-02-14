@@ -55,6 +55,11 @@ public class Car extends BaseEntity{
 	public void setCarMake(CarMake carMake) {
 		this.carMake = carMake;
 	}
+
+	@Override
+	public String toString() {
+		return "Car [price=" + price + ", getId()=" + getId() + "]";
+	}
 	
 	
 }

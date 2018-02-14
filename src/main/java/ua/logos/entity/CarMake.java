@@ -62,5 +62,7 @@ public class CarMake extends BaseEntity{
 	public void setCar(Car car) {
 		this.car = car;
 	}
+	
+	
 
 }

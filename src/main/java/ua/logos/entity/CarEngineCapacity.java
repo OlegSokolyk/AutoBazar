@@ -41,5 +41,10 @@ public class CarEngineCapacity extends BaseEntity{
 		this.carModel = carModel;
 	}
 
+	@Override
+	public String toString() {
+		return "CarEngineCapacity [capacity=" + capacity + ", getId()=" + getId() + "]";
+	}
+
 	
 }
