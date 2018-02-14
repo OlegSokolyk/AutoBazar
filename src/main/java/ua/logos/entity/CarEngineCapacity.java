@@ -41,8 +41,5 @@ public class CarEngineCapacity extends BaseEntity{
 		this.carModel = carModel;
 	}
 
-
-	
-	
 	
 }
