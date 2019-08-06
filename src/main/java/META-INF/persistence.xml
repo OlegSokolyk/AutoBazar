@@ -10,7 +10,7 @@
 			<property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost:3306/auto_bazar?useSSL=false&amp;serverTimezone=UTC" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="oleg1998got13" />
+			<property name="hibernate.connection.password" value="root" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			
 			<!-- update, create, create-drop -->
